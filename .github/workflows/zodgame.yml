@@ -1,15 +1,16 @@
-name: zodgame
+name: zodgame_autoreply
 
 on:
-  schedule:
-  - cron: "0 0 * * *"
+#   schedule:
+#   - cron: "0 0 * * *"
   
-  push:
-    branches: [ checkinAndreply ]
-  pull_request:
-    branches: [ checkinAndreply ]
+#   push:
+#     branches: [ checkinAndreply ]
+#   pull_request:
+#     branches: [ checkinAndreply ]
     
   workflow_dispatch:
+  
 jobs:
   build:
     runs-on: windows-latest
