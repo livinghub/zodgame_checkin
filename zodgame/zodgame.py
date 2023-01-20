@@ -9,6 +9,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
 import undetected_chromedriver as uc
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+import zod_autoreply as zap
 
 def get_driver_version():
    cmd = r'''powershell -command "&{(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion}"'''
@@ -163,6 +164,8 @@ def zodgame(cookie_string):
         
     formhash = driver.find_element(By.XPATH, '//input[@name="formhash"]').get_attribute('value')
     assert zodgame_checkin(driver, formhash) and zodgame_task(driver, formhash), "Checkin failed or task failed."
+    #auto reply
+    zap.zodgame_autoreply(driver)
 
     driver.close()
     driver.quit()
