@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 
 def is_vaild_tid(tid):
-    if tid in open('tid.txt', encoding='ASCII').read():
+    if tid in open('./zodgame/tid.txt', encoding='ASCII').read():
         return False
     else:
         return True
@@ -46,7 +46,7 @@ def get_vaild_tid(driver):
                 if(is_vaild_tid(flag_tid[1])):
                     tid_list.append(flag_tid[1])
     
-    with open('tid.txt', 'a', encoding='ASCII') as f:
+    with open('./zodgame/tid.txt', 'a', encoding='ASCII') as f:
         for tid in tid_list:
             f.write(tid+'\n')
     
@@ -69,6 +69,6 @@ def get_ptid(driver):
             ptid = re.search('[0-9]{6}', href).group()
             ptid_list.append(ptid)
             print(ptid)
-    with open('tid2.txt', 'a', encoding='ASCII') as f:
+    with open('./zodgame/tid2.txt', 'a', encoding='ASCII') as f:
         for ptid in ptid_list:
             f.write(ptid+'\n')
