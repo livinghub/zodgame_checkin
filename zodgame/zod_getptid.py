@@ -24,13 +24,14 @@ def get_driver_version():
 def get_ptid(driver):
     url = '''https://zodgame.xyz/home.php?mod=space&uid=646395&do=thread&view=me&type=reply&order=dateline&from=space&page='''
     ptid_list = []
-    for i in range(1, 10):
+    for i in range(1, 8):
         driver.get(url + str(i))
         for element in driver.find_elements(By.XPATH, '//table/tbody/tr/th/a'):
             href = element.get_attribute('href')
             # print(href)
-            ptid = re.search('[0-9]{6}', href).group()
-            ptid_list.append(ptid)
+            ptid = re.findall('[0-9]{6}', href)
+            if(len(ptid) != 0): 
+                ptid_list.append(ptid[0])
             # print(ptid)
     with open('./zodgame/tid.txt', 'a', encoding='ASCII') as f:
         for ptid in ptid_list:
