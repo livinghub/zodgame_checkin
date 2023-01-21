@@ -1,13 +1,13 @@
 name: zodgame_autoreply
 
 on:
-  schedule:
-  - cron: "0 17 * * *"
+  # schedule:
+  # - cron: "0 17 * * *"
   
-  push:
-    branches: 
-      - checkinAndreply 
-      - '!checkinAndreply/zodgame/tid.txt'
+  # push:
+  #   branches: 
+  #     - checkinAndreply 
+  #     - '!checkinAndreply/zodgame/tid.txt'
       
   workflow_dispatch:
 
