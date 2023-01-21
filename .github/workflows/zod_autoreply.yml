@@ -5,7 +5,7 @@ on:
   push:
     branches: 
       - checkinAndreply 
-      - '!checkinAndreply/tid.txt'
+      - '!checkinAndreply/zodgame/tid.txt'
 
 jobs:
   auto_reply:
@@ -18,19 +18,18 @@ jobs:
         run: |
           pip3 install -r ./zodgame/requirements.txt
 
-      - name: 爬取ptid 
-        run: |
-          python3 ./zodgame/zod_getptid.py "${{secrets.ZODGAME_COOKIE}}"
-
-      # - name: auto reply 
+      # - name: 爬取ptid 
       #   run: |
-      #     python3 ./zodgame/zodgame.py "${{secrets.ZODGAME_COOKIE}}"
+      #     python3 ./zodgame/zod_getptid.py "${{secrets.ZODGAME_COOKIE}}"
+
+      - name: run auto reply 
+        run: |
+          python3 ./zodgame/zodgame.py "${{secrets.ZODGAME_COOKIE}}"
 
       - name: 暂存提交
         run: |
           git config --global user.name 'eli[bot]'
           git config --global user.email 'no_reply@bot.com'
-          # export TZ='Asia/Shanghai'
           git add .
           git commit -m "update" -a
 
