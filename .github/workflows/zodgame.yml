@@ -23,9 +23,9 @@ jobs:
       run: |
         python3 ./zodgame/zod_getptid.py "${{secrets.ZODGAME_COOKIE}}"
     - name: Upload ptid result
-        uses: actions/upload-artifact@v3
-        with:
-          name: ptid
-          path: ./zodgame/tid.txt
+      uses: actions/upload-artifact@v3
+      with:
+        name: ptid
+        path: ./zodgame/tid.txt
     - uses: gautamkrishnar/keepalive-workflow@master
     
