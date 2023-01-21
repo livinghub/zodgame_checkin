@@ -36,14 +36,16 @@ def get_vaild_tid(driver):
     # fid_list = ['10']
     tid_list = []
     forum_url = '''https://zodgame.xyz/forum.php?mod=forumdisplay&fid='''
-    for fid in fid_list:
-        driver.get(forum_url + fid)
-        for element in driver.find_elements(By.XPATH, '//span[contains(text(), "回帖奖励")]/../../..'):
-            # print(element.get_attribute('id'))
-            flag_tid = element.get_attribute('id').split('_')
-            if(flag_tid[0] == 'normalthread'):
-                if(is_vaild_tid(flag_tid[1])):
-                    tid_list.append(flag_tid[1])
+    with open('./zodgame/tid.txt', 'r', encoding='ASCII') as f:
+        for fid in fid_list:
+            for page in range(1,11):
+                driver.get(forum_url + fid + "&page=" + str(page))
+                for element in driver.find_elements(By.XPATH, '//span[contains(text(), "回帖奖励")]/../../..'):
+                    # print(element.get_attribute('id'))
+                    flag_tid = element.get_attribute('id').split('_')
+                    if(flag_tid[0] == 'normalthread'):
+                        if flag_tid[1] not in f.read():
+                            tid_list.append(flag_tid[1])
     
     with open('./zodgame/tid.txt', 'a', encoding='ASCII') as f:
         for tid in tid_list:
