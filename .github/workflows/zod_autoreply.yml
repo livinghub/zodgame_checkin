@@ -8,7 +8,7 @@ on:
       - '!checkinAndreply/tid.txt'
 
 jobs:
-  update_ptid:
+  auto_reply:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +36,7 @@ jobs:
       - name: 推送
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GIT_TOKEN }}
           branch: ${{ github.ref }}
 
       - uses: gautamkrishnar/keepalive-workflow@master
