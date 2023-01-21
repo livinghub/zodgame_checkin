@@ -20,10 +20,9 @@ def go_reply(driver, tid):
     )
     js = '''
     var comment=["好东西，谢谢大佬分享。", "嘿嘿，碉堡了！", "东西很不错(￣ˇ￣)，谢谢楼猪！","感谢大佬的分享！真不错","感谢大佬，碉堡了",
-                "好东西呀，很有感觉。","真不错,谢谢了","太牛了，真不愧是大佬","无敌了，简直，谢谢分享","很棒，很戳我xp"];
-    var comment2=["(￣ˇ￣)", "b（￣▽￣）d", "(=￣ω￣=)", "(^ ^)", "／▽▽＼", "!(￣ˇ￣)!", " 弟弟很喜欢", "。。。我好了", " 弟弟哭了", " www.www", "。。。我替弟弟谢谢你", "。。弟弟不行了"];
-    var STARTNUMBER = -1;
-    var ENDNUMBER = 10;
+                "好东西呀，很有感觉。","真不错,谢谢了","太牛了，真不愧是大佬","无敌了，简直，谢谢分享","很棒，很戳我xp", "明人不说暗话 ", "这资源爱了", "非常不错的作品"];
+    var comment2=[" 我喜欢(￣ˇ￣)", " 看着就很赞！b（￣▽￣）d", "(=￣ω￣=)", "(^ ^)", " 爱了／▽▽＼", "!(￣ˇ￣)!", " 弟弟很喜欢",
+             "。。。我好了", " 弟弟哭了", " www.www", "。。。我替弟弟谢谢你", "。。弟弟不行了"];
     var temp_count = Math.floor(Math.random() * comment.length);
     var temp_count2 = Math.floor(Math.random() * comment2.length);
     document.getElementById("fastpostmessage").value = comment[temp_count]+comment2[temp_count2];
