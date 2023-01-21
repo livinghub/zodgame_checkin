@@ -1,4 +1,4 @@
-name: zodgame_autoreply
+name: zodgame_getptid
 
 on:
 #   schedule:
