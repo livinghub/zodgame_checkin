@@ -2,6 +2,8 @@ name: zodgame_autoreply
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ checkinAndreply ]
 
 jobs:
   get_ptid:
