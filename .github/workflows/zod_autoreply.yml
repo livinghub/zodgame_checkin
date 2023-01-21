@@ -9,17 +9,18 @@ on:
 
 jobs:
   auto_reply:
-    runs-on: windows-latest
+    # runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install requirements
-        run: |
-          pip3 install -r ./zodgame/requirements.txt
+      # - name: Install requirements
+      #   run: |
+      #     pip3 install -r ./zodgame/requirements.txt
 
-      - name: 爬取ptid 
-        run: |
-          python3 ./zodgame/zod_getptid.py "${{secrets.ZODGAME_COOKIE}}"
+      # - name: 爬取ptid 
+      #   run: |
+      #     python3 ./zodgame/zod_getptid.py "${{secrets.ZODGAME_COOKIE}}"
 
       # - name: auto reply 
       #   run: |
@@ -27,6 +28,7 @@ jobs:
 
       - name: 暂存提交
         run: |
+          echo "123456" > ./zodgame/tid.txt
           git config --global user.name 'eli[bot]'
           git config --global user.email '707884308@qq.com'
           # export TZ='Asia/Shanghai'
