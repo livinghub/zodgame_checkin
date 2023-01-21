@@ -1,11 +1,11 @@
 name: zodgame_autoreply
 
 on:
-  workflow_dispatch:
   push:
     branches: 
       - checkinAndreply 
       - '!checkinAndreply/zodgame/tid.txt'
+  workflow_dispatch:
 
 jobs:
   auto_reply:
