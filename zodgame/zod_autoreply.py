@@ -66,8 +66,9 @@ def get_ptid(driver):
         for element in driver.find_elements(By.XPATH, '//table/tbody/tr/th/a'):
             href = element.get_attribute('href')
             # print(href)
-            ptid = re.search('[0-9]{6}', href).group()
-            ptid_list.append(ptid)
+            ptid = re.findall('[0-9]{6}', href)
+            if(len(ptid) != 0): 
+                ptid_list.append(ptid[0])
             print(ptid)
     with open('./zodgame/tid2.txt', 'a', encoding='ASCII') as f:
         for ptid in ptid_list:
