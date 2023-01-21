@@ -3,7 +3,9 @@ name: zodgame_autoreply
 on:
   workflow_dispatch:
   push:
-    branches: [ checkinAndreply ]
+    branches: 
+      - checkinAndreply 
+      - '!checkinAndreply/tid.txt'
 
 jobs:
   update_ptid:
@@ -11,13 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install requirements
-        run: |
-          pip3 install -r ./zodgame/requirements.txt
+      # - name: Install requirements
+      #   run: |
+      #     pip3 install -r ./zodgame/requirements.txt
+      #   - uses: actions/setup-python@v4
 
-      - name: auto reply 
-        run: |
-          python3 ./zodgame/zodgame.py "${{secrets.ZODGAME_COOKIE}}"
+      # - name: auto reply 
+      #   run: |
+      #     python3 ./zodgame/zodgame.py "${{secrets.ZODGAME_COOKIE}}"
 
       - name: use git update ptid.txt
         run: |
@@ -31,6 +34,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
       - uses: gautamkrishnar/keepalive-workflow@master
         
