@@ -2,6 +2,7 @@ name: zodgame_autoreply
 
 on:
   workflow_dispatch:
+#   workflow_dispatch:
   # push:
   #   branches: 
   #     - checkinAndreply 
