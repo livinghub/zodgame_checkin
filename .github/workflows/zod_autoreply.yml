@@ -6,8 +6,8 @@ on:
     branches: [ checkinAndreply ]
 
 jobs:
-  runs-on: windows-latest
   update_ptid:
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -24,16 +24,12 @@ jobs:
           name: ptid
           path: ./zodgame/tid.txt
 
-  get_ptid:
-    steps:
       - name: Download ptid file
         uses: actions/download-artifact@v3
         with:
           name: ptid
           path: ./zodgame/tid.txt
 
-  auto_reply:
-    steps:
       - name: auto reply 
         run: |
           python3 ./zodgame/zodgame.py "${{secrets.ZODGAME_COOKIE}}"
