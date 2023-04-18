@@ -17,7 +17,9 @@ def do_task(driver):
     WebDriverWait(driver, 240).until(
         lambda x: x.title != "Just a moment..."
     )
-    print(driver.page_source)
+    # print(driver.page_source)
+    result = re.findall(r'<div id=“messagetext”>(.+?)</div>', driver.page_source)
+    print(result[0])
 
 
 def get_driver_version():
@@ -173,7 +175,7 @@ def zodgame(cookie_string):
         
     formhash = driver.find_element(By.XPATH, '//input[@name="formhash"]').get_attribute('value')
     assert zodgame_checkin(driver, formhash) and zodgame_task(driver, formhash), "Checkin failed or task failed."
-    assert do_task(driver) #小黑屋任务
+    do_task(driver) #小黑屋任务
 
     driver.close()
     driver.quit()
