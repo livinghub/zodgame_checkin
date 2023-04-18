@@ -19,7 +19,7 @@ def do_task(driver):
     )
     # print(driver.page_source)
     result = re.findall(r'<div id=“messagetext”>(.+?)</div>', driver.page_source)
-    print(result[0])
+    print(result)
 
 
 def get_driver_version():
