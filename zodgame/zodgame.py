@@ -10,6 +10,16 @@ import undetected_chromedriver as uc
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 
+#### 新增小黑屋任务
+def do_task(driver):
+    task_url = "https://zodgame.xyz/home.php?mod=task&do=apply&id=14"
+    driver.get(task_url)
+    WebDriverWait(driver, 240).until(
+        lambda x: x.title != "Just a moment..."
+    )
+    print(driver.page_source)
+
+
 def get_driver_version():
    cmd = r'''powershell -command "&{(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion}"'''
    try:
@@ -163,6 +173,7 @@ def zodgame(cookie_string):
         
     formhash = driver.find_element(By.XPATH, '//input[@name="formhash"]').get_attribute('value')
     assert zodgame_checkin(driver, formhash) and zodgame_task(driver, formhash), "Checkin failed or task failed."
+    assert do_task(driver) #小黑屋任务
 
     driver.close()
     driver.quit()
