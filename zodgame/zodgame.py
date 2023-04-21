@@ -12,14 +12,17 @@ from selenium.webdriver.common.by import By
 
 #### 新增小黑屋任务
 def do_task(driver):
-    task_url = "https://zodgame.xyz/home.php?mod=task&do=apply&id=14"
+    task_url = "https://zodgame.xyz/home.php?mod=task"
     driver.get(task_url)
     WebDriverWait(driver, 240).until(
         lambda x: x.title != "Just a moment..."
     )
-    # print(driver.page_source)
-    result = re.findall(r'<div id=“messagetext”>(.+?)</div>', driver.page_source)
-    print(result)
+    js = '''
+    if (window.location.href == "https://zodgame.xyz/home.php?mod=task")
+      { window.location.href = "https://zodgame.xyz/home.php?mod=task&do=apply&id=14"; }
+    ''' # js语句
+    driver.execute_script(js) # 执行js的方法
+    time.sleep(10)
 
 
 def get_driver_version():
