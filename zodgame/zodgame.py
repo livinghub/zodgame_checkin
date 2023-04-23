@@ -20,8 +20,8 @@ def do_task(driver):
     js = '''
     window.location.href = "https://zodgame.xyz/home.php?mod=task&do=apply&id=14";
     ''' # js语句
+    driver.set_script_timeout(60)
     driver.execute_script(js) # 执行js的方法
-    time.sleep(10)
 
 
 def get_driver_version():
@@ -186,7 +186,7 @@ def zodgame(cookie_string):
     assert len(driver.find_elements(By.XPATH, '//a[text()="用户名"]')) == 0, "Login fails. Please check your cookie."
         
     formhash = driver.find_element(By.XPATH, '//input[@name="formhash"]').get_attribute('value')
-    do_task(driver) #小黑屋任务
+    # do_task(driver) #小黑屋任务
     assert zodgame_checkin(driver, formhash) and zodgame_task(driver, formhash), "Checkin failed or task failed."
 
     driver.close()
