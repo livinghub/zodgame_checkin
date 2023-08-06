@@ -4,6 +4,7 @@ import re
 import sys
 import platform
 import subprocess
+import requests
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
 
 import undetected_chromedriver as uc
