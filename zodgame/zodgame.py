@@ -159,8 +159,11 @@ def zodgame(cookie_string):
     options.add_argument("--disable-popup-blocking")
       
     # version = get_driver_version()
-    version = get_latest_driver_version()
-    driver = uc.Chrome(version_main = version, options = options)
+    # version = get_latest_driver_version()
+    # driver = uc.Chrome(version_main = version, options = options)
+    driver = uc.Chrome(driver_executable_path = """C:\SeleniumWebDrivers\ChromeDriver\chromedriver.exe""",
+                       browser_executable_path = """C:\Program Files\Google\Chrome\Application\chrome.exe""",
+                       options = options)
 
     # Load cookie
     driver.get("https://zodgame.xyz/")
