@@ -157,6 +157,7 @@ def zodgame_task(driver, formhash):
 def zodgame(cookie_string):
     options = uc.ChromeOptions()
     options.add_argument("--disable-popup-blocking")
+    options.add_argument("--headless")
       
     # version = get_driver_version()
     # version = get_latest_driver_version()
